@@ -7,3 +7,6 @@ class TaskModel(models.Model):
     decription=models.TextField()
     assignDate=models.DateField()
     is_completed =models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.title

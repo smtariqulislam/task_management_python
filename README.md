@@ -11,3 +11,7 @@ python manage.py runserver
 python manage.py makemigrations 
 python manage.py migrate   
 python manage.py createsuperuser   
+
+
+2. steps
+object to realname showing admin 
