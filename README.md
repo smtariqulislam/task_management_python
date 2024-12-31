@@ -15,3 +15,9 @@ python manage.py createsuperuser
 
 2. steps
 object to realname showing admin 
+bootstap setup
+base file 
+form file add 
+crispi add setting 
+view file write function post edit delete
+urlfile
