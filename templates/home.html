@@ -4,9 +4,11 @@
   {% for task in data %}
   <div class="col-sm-3">
     <div class="card mx-2">
+      {% comment %}
       <div class="card-body">
         <h5 class="card-title">{{task.title}}</h5>
-        <h5 class="card-title">{{task.id}}</h5>
+        <h5 class="card-title">{{task.decription}}</h5>
+        <h5 class="card-title">{{task.assignDate}}</h5>
 
         <p>
           Category: {% for cat in task.category.all %}
@@ -15,12 +17,50 @@
           {% endfor%}
         </p>
 
-        {% comment %}
-        <a href="{% url 'edit_task' task.id %}" class="btn btn-primary">Edit</a>
-        {% endcomment %}
-        <a href="{% url 'delete_task' task.id %}" class="btn btn-danger"
-          >Delete</a
-        >
+        <div>
+          {% if not task.is_completed %}
+          <a href="{% url 'edit_task' task.id %}" class="btn btn-primary"
+            >Edit</a
+          >
+          <a href="{% url 'delete_task' task.id %}" class="btn btn-danger"
+            >Delete</a
+          >
+          {% else %}
+          <span>Complete</span>
+          {% endif %}
+        </div>
+      </div>
+      {% endcomment %}
+      <div class="card-body">
+        <h5 class="card-title">{{ task.title }}</h5>
+        <p class="card-text">{{ task.decription }}</p>
+        <p class="card-text">
+          <strong>Assigned Date:</strong> {{ task.assignDate }}
+        </p>
+
+        <p>
+          <strong>Category:</strong>
+          {% for cat in task.category.all %}
+          <span class="badge bg-warning text-dark m-1">{{ cat.name }}</span>
+          {% empty %}
+          <span class="text-muted">No categories assigned</span>
+          {% endfor %}
+        </p>
+
+        <div class="d-flex gap-2">
+          {% if not task.is_completed %}
+          <a href="{% url 'edit_task' task.id %}" class="btn btn-primary btn-sm"
+            >Edit</a
+          >
+          <a
+            href="{% url 'delete_task' task.id %}"
+            class="btn btn-danger btn-sm"
+            >Delete</a
+          >
+          {% else %}
+          <span class="badge bg-success">Complete</span>
+          {% endif %}
+        </div>
       </div>
     </div>
   </div>
