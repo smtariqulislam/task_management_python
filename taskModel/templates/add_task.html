@@ -1,6 +1,6 @@
 {% extends 'base.html' %} {% load crispy_forms_tags%} {% block content%}
 
-<h1>Task</h1>
+<h1 class="text-center">Task</h1>
 
 <form style="width: 50%; margin: auto" method="post">
   {% csrf_token %} {{form | crispy}}
